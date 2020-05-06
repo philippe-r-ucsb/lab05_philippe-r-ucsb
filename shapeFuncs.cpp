@@ -2,7 +2,7 @@
 #include <string>
 #include <sstream>  // for ostringstream
 #include <iomanip> // for setprecision
-#include "utility.h"
+#include <cmath>
 
 using namespace std;
 
@@ -11,10 +11,11 @@ using namespace std;
 #include "shapeFuncs.h"
 #include "utility.h"
 
+
 // Compute distance between two points
 
 double distanceBetween(Point p, Point q) {
-  return 99999.9; // @@@ STUB
+  return sqrt(pow(p.x - q.x, 2.0) + pow(p.y - q.y, 2.0));
   // HINTS: The distance formula is something you hopefully remember
   //   from H.S. algebra, but if not, Wikipedia is your friend.
   //   The sqrt function is available when you use #include <cmath>, 
@@ -23,7 +24,6 @@ double distanceBetween(Point p, Point q) {
 
 }
 
- 
 // The function initPoint below illustrates passing a struct by pointer.
 // Inside this function:
 //  p   is the address of the struct Point
