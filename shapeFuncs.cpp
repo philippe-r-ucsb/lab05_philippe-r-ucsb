@@ -49,10 +49,16 @@ string pointToString(Point p, int precision) {
 }
 
 string boxToString(Box b, int precision) {
-  
+  ostringstream oss;
+  oss << setprecision(precision);
+  oss << "ul=";
+  oss <<  pointToString(b.ul, precision);
+  oss << ",w=";
+  oss << b.width;
+  oss << ",h=";
+  oss << b.height;
   // SAMPLE FORMAT: [ul=(3.4,-5),w=5,h=7] (without the []s)
-  
-  return "stub!"; // TODO: Delete this line and comment and replace with appropriate code
+  return oss.str();
 }
  
 
@@ -91,7 +97,11 @@ bool boxesApproxEqual(Box b1, Box b2, double tolerance) {
 
 void initBox(struct Box *b, double ulx, double uly, double w, double h)
 {
-  return; // @@@ For a void function a "naked return" is a "do nothing" stub
+  Point p;
+  initPoint(&p, ulx, uly);
+  b->ul = p;
+  b->width = w;
+  b->height = h;
 }
 
 
