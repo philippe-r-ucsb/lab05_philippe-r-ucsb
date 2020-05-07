@@ -3,6 +3,7 @@
 #include <sstream>  // for ostringstream
 #include <iomanip> // for setprecision
 #include <cmath>
+#include "utility.h"
 
 using namespace std;
 
@@ -68,22 +69,14 @@ bool pointsApproxEqual(Point p1,
 }
 
 bool boxesApproxEqual(Box b1, Box b2, double tolerance) {
-
   // Two boxes are approximately equal if their upper left corners are approximately 
   // equal, and if their corresponding widths and height are approx equal.
 
   // Remember: to test whether double values a and b are approximately equal, you need:
   //   fabs(a - b) < tol
-  // Don't use a==b since this doesn't take tolerance into account.
-  // You'll need to use this technique for width and height
- 
-  // You may find it helpful to abstract out an "approxEqual" function that takes
-  // two parameters of type "double".  Put the prototype in your utility.h 
-  // and the definition in your utility.cpp file.
-
-  // TODO: FILL THIS IN WITH APPROPRIATE CODE
-
-  return false; // STUB!  TODO: Delete this line and comment and replace with appropriate code
+  return pointsApproxEqual(b1.ul, b2.ul, tolerance)
+    && approx_equal(b1.width, b2.width, tolerance)
+    && approx_equal(b1.height, b2.height, tolerance);
 }
 
 
